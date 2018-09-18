@@ -1,0 +1,47 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 5
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "txtfilereader",
+          "parameter": {
+            "path": "/usr/local/python/workspace/test.txt",
+            "charset": "UTF-8",
+            "column": [
+              {
+                "index": 0,
+                "type": "long"
+              },
+              {
+                "index": 1,
+                "type": "string"
+              }
+            ],
+            "fieldDelimiter": ","
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "column": ["pk", "name"],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://192.168.151.41:3306/saas?useUnicode=true&characterEncoding=UTF-8",
+                "table": ["b"]
+              }
+            ],
+            "password": "ocspasswd",
+            "username": "ocsuser",
+            "where": "",
+            "session": ["set names utf8mb4"]
+          }
+        }
+      }
+    ]
+  }
+}
