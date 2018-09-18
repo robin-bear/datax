@@ -1,0 +1,131 @@
+
+DataX (DATAX-OPENSOURCE-3.0), From Alibaba !
+Copyright (C) 2010-2017, Alibaba Group. All Rights Reserved.
+
+
+2018-09-18 19:42:35.524 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2018-09-18 19:42:35.530 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.181-b13
+	jvmInfo:	Linux amd64 3.10.0-693.el7.x86_64
+	cpu num:	1
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[Copy, MarkSweepCompact]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	Eden Space                     | 273.06MB                       | 273.06MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Survivor Space                 | 34.13MB                        | 34.13MB                        
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+	Tenured Gen                    | 682.69MB                       | 682.69MB                       
+
+
+2018-09-18 19:42:35.550 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"mysqlreader",
+				"parameter":{
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:mysql://192.168.151.41:3306/saas?useUnicode=true&characterEncoding=UTF-8"
+							],
+							"querySql":[
+								"select * from bbs_t_area where tenant_id =41 and delflag = 0 "
+							]
+						}
+					],
+					"password":"*********",
+					"username":"ocsuser",
+					"where":""
+				}
+			},
+			"writer":{
+				"name":"txtfilewriter",
+				"parameter":{
+					"fileName":"out_mysql_file.txt",
+					"format":"yyyy-MM-dd",
+					"path":"/usr/local/python/workspace",
+					"writeMode":"truncate"
+				}
+			}
+		}
+	],
+	"setting":{
+		"speed":{
+			"channel":200
+		}
+	}
+}
+
+2018-09-18 19:42:35.575 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2018-09-18 19:42:35.576 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2018-09-18 19:42:35.576 [main] INFO  JobContainer - DataX jobContainer starts job.
+2018-09-18 19:42:35.578 [main] INFO  JobContainer - Set jobId = 0
+2018-09-18 19:42:36.114 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:mysql://192.168.151.41:3306/saas?useUnicode=true&characterEncoding=UTF-8&yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true.
+2018-09-18 19:42:36.138 [job-0] WARN  TxtFileWriter$Job - 您使用format配置日期格式化, 这是不推荐的行为, 请优先使用dateFormat配置项, 两项同时存在则使用dateFormat.
+2018-09-18 19:42:36.204 [job-0] WARN  UnstructuredStorageWriterUtil - 您的encoding配置为空, 将使用默认值[UTF-8]
+2018-09-18 19:42:36.205 [job-0] WARN  UnstructuredStorageWriterUtil - 您没有配置列分隔符, 使用默认值[,]
+2018-09-18 19:42:36.205 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2018-09-18 19:42:36.205 [job-0] INFO  JobContainer - DataX Reader.Job [mysqlreader] do prepare work .
+2018-09-18 19:42:36.206 [job-0] INFO  JobContainer - DataX Writer.Job [txtfilewriter] do prepare work .
+2018-09-18 19:42:36.206 [job-0] INFO  TxtFileWriter$Job - 由于您配置了writeMode truncate, 开始清理 [/usr/local/python/workspace] 下面以 [out_mysql_file.txt] 开头的内容
+2018-09-18 19:42:36.215 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2018-09-18 19:42:36.215 [job-0] INFO  JobContainer - Job set Channel-Number to 200 channels.
+2018-09-18 19:42:36.229 [job-0] INFO  JobContainer - DataX Reader.Job [mysqlreader] splits to [1] tasks.
+2018-09-18 19:42:36.230 [job-0] INFO  TxtFileWriter$Job - begin do split...
+2018-09-18 19:42:36.242 [job-0] INFO  TxtFileWriter$Job - splited write file name:[out_mysql_file.txt__f6491247_1e1b_46a4_af90_27dde6fbd555]
+2018-09-18 19:42:36.242 [job-0] INFO  TxtFileWriter$Job - end do split.
+2018-09-18 19:42:36.242 [job-0] INFO  JobContainer - DataX Writer.Job [txtfilewriter] splits to [1] tasks.
+2018-09-18 19:42:36.263 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2018-09-18 19:42:36.266 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2018-09-18 19:42:36.280 [job-0] INFO  JobContainer - Running by standalone Mode.
+2018-09-18 19:42:36.318 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2018-09-18 19:42:36.322 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2018-09-18 19:42:36.322 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2018-09-18 19:42:36.351 [0-0-0-writer] INFO  TxtFileWriter$Task - begin do write...
+2018-09-18 19:42:36.352 [0-0-0-writer] INFO  TxtFileWriter$Task - write to file : [/usr/local/python/workspace/out_mysql_file.txt__f6491247_1e1b_46a4_af90_27dde6fbd555]
+2018-09-18 19:42:36.360 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2018-09-18 19:42:36.365 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select * from bbs_t_area where tenant_id =41 and delflag = 0 
+] jdbcUrl:[jdbc:mysql://192.168.151.41:3306/saas?useUnicode=true&characterEncoding=UTF-8&yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true].
+2018-09-18 19:42:37.106 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select * from bbs_t_area where tenant_id =41 and delflag = 0 
+] jdbcUrl:[jdbc:mysql://192.168.151.41:3306/saas?useUnicode=true&characterEncoding=UTF-8&yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true].
+2018-09-18 19:42:37.131 [0-0-0-writer] INFO  TxtFileWriter$Task - end do write
+2018-09-18 19:42:37.189 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[856]ms
+2018-09-18 19:42:37.191 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2018-09-18 19:42:46.320 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4092 records, 269889 bytes | Speed 26.36KB/s, 409 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.071s |  All Task WaitReaderTime 0.399s | Percentage 100.00%
+2018-09-18 19:42:46.321 [job-0] INFO  AbstractScheduler - Scheduler accomplished all tasks.
+2018-09-18 19:42:46.321 [job-0] INFO  JobContainer - DataX Writer.Job [txtfilewriter] do post work.
+2018-09-18 19:42:46.322 [job-0] INFO  JobContainer - DataX Reader.Job [mysqlreader] do post work.
+2018-09-18 19:42:46.322 [job-0] INFO  JobContainer - DataX jobId [0] completed successfully.
+2018-09-18 19:42:46.324 [job-0] INFO  HookInvoker - No hook invoked, because base dir not exists or is a file: /usr/local/python/datax/hook
+2018-09-18 19:42:46.326 [job-0] INFO  JobContainer - 
+	 [total cpu info] => 
+		averageCpu                     | maxDeltaCpu                    | minDeltaCpu                    
+		-1.00%                         | -1.00%                         | -1.00%
+                        
+
+	 [total gc info] => 
+		 NAME                 | totalGCCount       | maxDeltaGCCount    | minDeltaGCCount    | totalGCTime        | maxDeltaGCTime     | minDeltaGCTime     
+		 Copy                 | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+		 MarkSweepCompact     | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+
+2018-09-18 19:42:46.326 [job-0] INFO  JobContainer - PerfTrace not enable!
+2018-09-18 19:42:46.327 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4092 records, 269889 bytes | Speed 26.36KB/s, 409 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.071s |  All Task WaitReaderTime 0.399s | Percentage 100.00%
+2018-09-18 19:42:46.354 [job-0] INFO  JobContainer - 
+任务启动时刻                    : 2018-09-18 19:42:35
+任务结束时刻                    : 2018-09-18 19:42:46
+任务总计耗时                    :                 10s
+任务平均流量                    :           26.36KB/s
+记录写入速度                    :            409rec/s
+读出记录总数                    :                4092
+读写失败总数                    :                   0
+
