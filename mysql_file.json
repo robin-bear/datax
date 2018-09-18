@@ -1,0 +1,42 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 200
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "ocsuser",
+                        "password": "ocspasswd",
+                        "where": "",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "select * from bbs_t_area where tenant_id =41 and delflag = 0 "
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://192.168.151.41:3306/saas?useUnicode=true&characterEncoding=UTF-8"
+                                ]
+                            }
+                        ]
+                    }
+                },
+              
+          "writer": {
+                    "name": "txtfilewriter",
+                    "parameter": {
+                        "path": "/usr/local/python/workspace",
+                        "fileName": "out_mysql_file.txt",
+                        "writeMode": "truncate",
+                        "format": "yyyy-MM-dd"
+                    }
+                }
+            
+            }
+        ]
+    }
+}
